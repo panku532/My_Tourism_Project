@@ -1,0 +1,207 @@
+/* ==========================================================================
+   Travel Buddy - Core Design System & Animations
+   ========================================================================== */
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #F9F8F6;
+    color: #1E293B;
+}
+
+/* Scrollbar Utilities */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* ==========================================================================
+   Rich Animation System
+   ========================================================================== */
+
+@keyframes tabFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.99);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatUpDown {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes planeFlyLoop {
+    0% { transform: translate(-30px, 15px) rotate(-8deg); opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: translate(320px, -40px) rotate(-15deg); opacity: 0; }
+}
+
+@keyframes pulseGlowRing {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 74, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 16px rgba(255, 107, 74, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 107, 74, 0); }
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes rainDropAnim {
+    0% { transform: translateY(-30px); opacity: 0; }
+    30% { opacity: 0.8; }
+    100% { transform: translateY(180px); opacity: 0; }
+}
+
+@keyframes cloudDriftSlow {
+    0% { transform: translateX(-15%); }
+    100% { transform: translateX(115%); }
+}
+
+@keyframes soundWaveBounce {
+    0%, 100% { height: 8px; }
+    50% { height: 34px; }
+}
+
+@keyframes dashLine {
+    to { stroke-dashoffset: -60; }
+}
+
+.animate-tab-content {
+    animation: tabFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+    animation: floatUpDown 3.8s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulseGlowRing 2.2s infinite;
+}
+
+.flight-dash-path {
+    stroke-dasharray: 8 6;
+    animation: dashLine 1.8s linear infinite;
+}
+
+.interactive-3d-card {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.interactive-3d-card:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-8px);
+    box-shadow: 0 25px 35px -10px rgba(10, 37, 51, 0.2);
+}
+
+/* ==========================================================================
+   Ambient Weather Background Themes
+   ========================================================================== */
+
+.theme-sunset {
+    background: linear-gradient(135deg, #1f1c2c 0%, #923cb5 50%, #f953c6 100%);
+}
+
+.theme-night {
+    background: linear-gradient(135deg, #050b14 0%, #0d1b2a 50%, #1b263b 100%);
+}
+
+.theme-monsoon {
+    background: linear-gradient(135deg, #14213d 0%, #1f4068 50%, #162447 100%);
+}
+
+.theme-sunny {
+    background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #90e0ef 100%);
+}
+
+/* ==========================================================================
+   3D Perspective & Motion Engine
+   ========================================================================== */
+
+.perspective-container {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+}
+
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.45s ease;
+    will-change: transform;
+}
+
+.card-3d:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-5deg) translateY(-8px) scale(1.015);
+    box-shadow: 0 30px 60px -15px rgba(10, 37, 51, 0.22), 0 0 25px rgba(255, 107, 74, 0.18);
+}
+
+.pop-3d-sm {
+    transform: translateZ(16px);
+    transition: transform 0.3s ease;
+}
+
+.pop-3d-lg {
+    transform: translateZ(28px);
+    transition: transform 0.3s ease;
+}
+
+@keyframes float3D-1 {
+    0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+    50% { transform: translateY(-10px) rotateX(4deg) rotateY(-3deg); }
+}
+
+@keyframes float3D-2 {
+    0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+    50% { transform: translateY(-14px) rotateX(-5deg) rotateY(4deg); }
+}
+
+@keyframes compassGlow {
+    0%, 100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6)); }
+    50% { transform: rotate(180deg) scale(1.08); filter: drop-shadow(0 0 20px rgba(255, 107, 74, 0.8)); }
+}
+
+.animate-float-3d-1 {
+    animation: float3D-1 4.5s ease-in-out infinite;
+}
+
+.animate-float-3d-2 {
+    animation: float3D-2 5.5s ease-in-out infinite;
+}
+
+.animate-compass {
+    animation: compassGlow 12s ease-in-out infinite;
+}
+
+/* 3D Glassmorphism Badges */
+.glass-3d-dark {
+    background: rgba(10, 37, 51, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Dynamic Time-of-Day Sky Atmospheres */
+.sky-late-night, .sky-night {
+    background: radial-gradient(circle at 80% 20%, #1e1b4b 0%, #0f172a 40%, #030712 100%);
+}
+
+.sky-dawn, .sky-morning {
+    background: radial-gradient(circle at 80% 20%, #fed7aa 0%, #38bdf8 50%, #0284c7 100%);
+}
+
+.sky-day {
+    background: radial-gradient(circle at 80% 20%, #38bdf8 0%, #0284c7 50%, #0c4a6e 100%);
+}
+
+.sky-sunset, .sky-evening {
+    background: radial-gradient(circle at 80% 20%, #fb7185 0%, #ea580c 40%, #1e1b4b 100%);
+}

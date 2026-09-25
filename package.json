@@ -1,0 +1,19 @@
+{
+  "name": "travel-buddy-platform",
+  "version": "1.0.0",
+  "description": "Smart Tourism & Travel Platform - Modular Frontend Architecture",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "travel",
+    "tourism",
+    "react",
+    "tailwind",
+    "modular"
+  ],
+  "author": "",
+  "license": "ISC"
+}
